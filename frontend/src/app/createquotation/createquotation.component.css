@@ -1,0 +1,140 @@
+.heads{margin-left: 5px;}
+.remov{
+  margin-top: 30px;
+}
+.text-danger {
+  font-size: 0.875rem; /* Adjust font size for error messages */
+}
+
+
+.contain{
+  margin-top: 10px;
+  height: 95%;
+  width: 95%;
+  border-top: 1px solid #000;
+  padding-top: 15px;
+
+
+}
+.btn-primary {
+  background-color: #007bff; /* Bootstrap's default primary color */
+  border-color: #083f7a;
+  padding: 6px 2px;
+  font-size: 16px;
+  margin-left: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 160px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #003d80;
+}
+.btn-danger{
+  width: 110px;
+}
+.custom-heading {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; /* Change to your desired font */
+  font-size: 2.3rem; /* Adjust size */
+  color: #000000; /* Change color */
+  font-weight: bold; /* Bold */
+  margin-bottom: 0px;
+}
+.text-danger {
+  font-weight: bold; /* Make error messages bold */
+}
+
+.fw-bold {
+  font-weight: bold; /* Ensure bold text for labels */
+}
+.btn-success{
+  margin-left: 80px;
+}
+.totals-section {
+  padding: 20px 0;
+}
+
+.total-box {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.discount-input {
+  width: 100%;
+}
+
+.row .col-sm-3 {
+  padding-left: 0;
+}
+
+.btn-success {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+}
+
+label {
+  text-align: right;
+}
+
+.text-danger {
+  margin-top: 5px;
+}
+
+.text-end {
+  text-align: right;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+}
+#workfield {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+
+/* Outer container for proper horizontal alignment */
+.selection-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0px;
+  gap: 15px; /* Reduced space between dropdowns */
+  max-width: 700px; /* Adjust width */
+  margin: 20px auto; /* Centered layout */
+}
+
+/* Individual selection boxes */
+.selection-box {
+  display: flex;
+  flex-direction: row; /* Keep label and select closer */
+  align-items: center;
+  gap: 10px; /* Reduced space between label and dropdown */
+  width: 100%;
+}
+
+/* Label styling */
+label {
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap; /* Prevent label from wrapping */
+}
+
+/* Dropdown styling */
+.custom-select {
+  flex-grow: 1; /* Ensure dropdown takes available space */
+  padding: 8px;
+  border: 2px solid #777373;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
+/* Hover and focus effects */
+.custom-select:hover,
+.custom-select:focus {
+  border-color: #000000;
+  outline: none;
+  box-shadow: 0 0 4px rgba(31, 36, 41, 0.2);
+}

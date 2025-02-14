@@ -1,0 +1,10 @@
+
+  #sidebarMenu {
+    width: 250px;
+  }
+
+  .content {
+    margin-left: 250px;
+    /* This matches the width of the sidebar */
+  }
+

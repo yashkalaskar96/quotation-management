@@ -1,0 +1,153 @@
+<div class="container-fluid vh-100">
+  <div class="row flex-nowrap">
+    <!-- Sidebar -->
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <!-- Logo -->
+        <a
+          routerLink="/home"
+          class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        >
+          <i class="bi bi-building-check fs-4 px-1 mt-2"></i>
+          <span class="fs-4 d-none d-sm-inline mt-2">Quotations</span>
+        </a>
+
+        <!-- Sidebar Menu -->
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+          <!-- Create Quotation -->
+          <li class="nav-item">
+            <a routerLink="/createquotation" class="nav-link align-middle px-0">
+              <i class="bi bi-file-plus-fill"></i>
+              <span class="ms-1 d-none d-sm-inline">Create Quotation</span>
+            </a>
+          </li>
+
+          <!-- All Quotations -->
+          <li class="nav-item">
+            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="bi bi-file-text"></i>
+              <span class="ms-1 d-none d-sm-inline">All Quotations</span>
+            </a>
+            <!-- <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0">
+                  <i class="bi bi-pie-chart"></i>
+                  <span class="d-none d-sm-inline">Item 1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0">
+                  <i class="bi bi-pie-chart"></i>
+                  <span class="d-none d-sm-inline">Item 2</span>
+                </a>
+              </li>
+            </ul> -->
+          </li>
+
+          <!-- Ongoing Quotations -->
+          <li class="nav-item">
+            <a routerLink="/ongoingquotations" class="nav-link px-0 align-middle">
+              <i class="bi bi-graph-up"></i>
+              <span class="ms-1 d-none d-sm-inline">Ongoing Quotation</span>
+            </a>
+          </li>
+
+          <!-- Analyze -->
+          <li class="nav-item">
+            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="bi bi-bar-chart"></i>
+              <span class="ms-1 d-none d-sm-inline">Analyze</span>
+            </a>
+            <!-- <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0">
+                  <i class="bi bi-pie-chart"></i>
+                  <span class="d-none d-sm-inline px-1">Item 1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0">
+                  <i class="bi bi-pie-chart"></i>
+                  <span class="d-none d-sm-inline px-1">Item 2</span>
+                </a>
+              </li>
+            </ul> -->
+          </li>
+
+          <!-- Rate Cards -->
+          <li class="nav-item">
+            <a routerLink="/listratecard" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="bi bi-tags"></i>
+              <span class="ms-1 d-none d-sm-inline">Rate Cards</span>
+            </a>
+            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+              <li class="w-100">
+                <a routerLink="/createratecard" class="nav-link px-0">
+                  <i class="bi bi-plus-square-dotted mx-1"></i>
+                  <span class="d-none d-sm-inline">Create </span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/listratecard" class="nav-link px-0">
+                  <i class="bi bi-list-nested mx-1"></i>
+                  <span class="d-none d-sm-inline">List</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Clients -->
+          <li class="nav-item">
+            <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="bi bi-people"></i>
+              <span class="ms-1 d-none d-sm-inline">Clients</span>
+            </a>
+            <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+              <li class="w-100">
+                <a routerLink="/addcustomer" class="nav-link px-0">
+                  <i class="bi bi-person-plus-fill"></i>
+                  <span class="d-none d-sm-inline px-1">Add Clients</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/listcustomer" class="nav-link px-0">
+                  <i class="bi bi-person-lines-fill"></i>
+                  <span class="d-none d-sm-inline px-1">List Clients</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- User Dropdown -->
+        <hr />
+        <div class="dropdown pb-4">
+          <a
+            href="#"
+            class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            id="dropdownUser1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-circle"></i>
+            <span class="mx-2">Sign out</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col py-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

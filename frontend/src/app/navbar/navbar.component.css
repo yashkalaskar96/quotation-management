@@ -1,0 +1,36 @@
+.container-fluid {
+  padding-left: 0;
+  height: 100%;
+}
+
+.bg-dark {
+  height: 100vh; /* Ensure sidebar spans the full height */
+}
+.nav-link {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+}
+
+.nav-item {
+  width: 100%; /* Make sure the items take full width */
+  padding-bottom: 5px;
+  font-size: 17px;
+}
+.sidebar {
+  height: 100vh; /* Set the sidebar to full viewport height */
+}
+
+.sidebar-content {
+  flex-grow: 1; /* Allow the sidebar content to grow */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+}
+.col {
+  height: 100vh; /* Set the height of the main content area to full viewport height */
+  overflow-y: auto; /* Enable vertical scrolling for the content */
+  position: relative; /* Allow absolute positioning for child elements if needed */
+}
+.dropdown{
+  margin-bottom: 10px;
+}
+

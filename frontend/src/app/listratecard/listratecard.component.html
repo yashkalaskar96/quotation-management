@@ -1,0 +1,328 @@
+<!-- Toggle Button -->
+<div class="container row-2">
+  <h2>Rate Card List</h2>
+
+  <div class="button-group">
+    <button class="custom-button" (click)="toggleWorkFields()">
+      <i class="bi bi-card-list mx-1"></i>
+      {{ showWorkFields ? "Hide Work Fields" : "Show Work Fields" }}
+    </button>
+
+    <button routerLink="/createratecard" class="custom-button">
+      <i class="bi bi-plus-circle"></i> Create Rate Card
+    </button>
+  </div>
+</div>
+
+
+<div *ngIf="showWorkFields">
+  <hr>
+<div class="work-field-container">
+  <input
+    [(ngModel)]="newWorkField"
+    placeholder="Enter new work field"
+    class="work-field-input"
+  />
+  <button class="work-field-button" (click)="addNewWorkField()">
+    Add New Work Field
+  </button>
+</div>
+
+
+<!-- Work Fields Table (Visible only when showWorkFields is true) -->
+
+<table  class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>SR. NO.</th>
+      <th>Work Field Name</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let work of workFields; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <span *ngIf="!work.editing">{{ work.workfieldName }}</span>
+        <input
+          *ngIf="work.editing"
+          [(ngModel)]="work.workfieldName"
+          class="form-control"
+        />
+      </td>
+      <td>{{ work.createdAt | date : "short" }}</td>
+      <td>
+        <button
+          *ngIf="!work.editing"
+          class="btn btn-warning btn-sm me-2"
+          (click)="enableEditModewf(work)"
+        >
+          Edit
+        </button>
+        <button
+          *ngIf="work.editing"
+          class="btn btn-success btn-sm me-2"
+          (click)="saveWorkfield(work)"
+        >
+          Save
+        </button>
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deleteWorkField(work.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<hr />
+
+<div class="mb-3 sort">
+  <input
+    type="text"
+    placeholder="Search..."
+    class="form-control search"
+    [(ngModel)]="searchTerm"
+  />
+</div>
+
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th>Sr. No</th>
+      <th>Contractor Name</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th (click)="sort(contractors, 'workFieldId')">Work Field ⬇</th>
+      <th>Products</th>
+      <th class="actioncolumns">Edit</th>
+      <th class="actioncolumns">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cont of contractors | filter : searchTerm; let i = index">
+      <td>{{ i + 1 }}</td>
+      <ng-container *ngIf="!cont.editing; else editTemplate">
+        <td>{{ cont.name }}</td>
+        <td>{{ cont.mobileNumber }}</td>
+        <td>{{ cont.email }}</td>
+        <td>{{ cont.address }}</td>
+        <td>{{ getWorkFieldName(cont.workFieldId) }}</td>
+        <td>
+          <button
+            class="btn btn-light custom-border"
+            (click)="toggleProducts(cont.id)"
+          >
+            {{ cont.expanded ? "Hide Products" : "Show Products" }}
+          </button>
+        </td>
+        <td class="actioncolumns">
+          <button class="btn btn-light" (click)="enableEditMode(cont)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+        </td>
+        <td class="actioncolumns">
+          <button
+            class="btn btn-outline-danger border"
+            (click)="deleteContractor(cont.id)"
+          >
+            <i class="bi bi-trash3 mx-1"></i>
+          </button>
+        </td>
+      </ng-container>
+      <!-- Edit Template -->
+      <ng-template #editTemplate>
+        <td>
+          <input type="text" [(ngModel)]="cont.name" class="form-control" />
+        </td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="cont.mobileNumber"
+            class="form-control"
+          />
+        </td>
+        <td>
+          <input type="email" [(ngModel)]="cont.email" class="form-control" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="cont.address" class="form-control" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="cont.work" class="form-control" />
+        </td>
+        <td>
+          <button
+            class="btn btn-light custom-border"
+            (click)="toggleProducts(cont.id)"
+          >
+            {{ cont.expanded ? "Hide Products" : "Show Products" }}
+          </button>
+        </td>
+        <td class="row-2">
+          <button
+            class="btn btn-light mx-1"
+            (click)="saveEditedContractor(cont)"
+          >
+            <i class="bi bi-floppy"></i>
+          </button>
+          <button class="btn btn-light" (click)="cancelEdit(cont)">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-outline-danger border"
+            (click)="deleteContractor(cont.id)"
+          >
+            <i class="bi bi-trash3"></i>
+          </button>
+        </td>
+      </ng-template>
+    </tr>
+    <hr />
+
+    <!-- Expandable Products Section-->
+    <ng-container *ngFor="let contractor of contractors; let i = index">
+      <tr *ngIf="contractor.expanded">
+        <td colspan="9">
+          <div class="contractor-header">
+            <h3 class="headoftable">
+              {{ i + 1 }}. {{ getWorkFieldName(contractor.workFieldId) }} ||
+              Contractor: {{ contractor.name }}
+            </h3>
+
+            <button
+              class="btn btn-primary mx-1 mb-2"
+              (click)="toggleAddProduct(i)"
+              *ngIf="!showProductInputs[i]"
+            >
+              Add More Products
+            </button>
+          </div>
+
+          <div *ngIf="showProductInputs[i]">
+            <input
+              type="text"
+              [(ngModel)]="newProductName[i]"
+              placeholder="Product Name"
+              class="form-control d-inline w-25"
+            />
+            <input
+              type="number"
+              [(ngModel)]="newProductRate[i]"
+              placeholder="Rate"
+              class="form-control d-inline w-25 mx-1"
+            />
+            <input
+              type="text"
+              [(ngModel)]="newProductWorkArea[i]"
+              placeholder="Work Area"
+              class="form-control d-inline w-25"
+              readonly
+            />
+            <button
+              class="btn btn-primary mx-1 mb-2"
+              (click)="addmoreproducts(contractor.id, i)"
+            >
+              Add Product
+            </button>
+          </div>
+
+
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Sr. No</th>
+                <th>Product Name</th>
+                <th>Rate</th>
+                <th>Work Area</th>
+                <th class="actioncolumns">Edit</th>
+                <th class="actioncolumns">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let product of getContractorProducts(contractor.id);
+                  let j = index
+                "
+              >
+                <td>{{ j + 1 }}</td>
+                <ng-container
+                  *ngIf="!product.editing; else editProductTemplate"
+                >
+                  <td>{{ product.productName }}</td>
+                  <td>{{ product.rate | number : "" }}</td>
+                  <td>{{ product.workArea }}</td>
+                  <td class="action">
+                    <button
+                      class="btn btn-light"
+                      (click)="enableProductEditMode(product)"
+                    >
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                  </td>
+                  <td class="action">
+                    <button
+                      class="btn btn-outline-danger border"
+                      (click)="deleteProduct(contractor.id, product.id)"
+                    >
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                  </td>
+                </ng-container>
+                <!-- Product Edit Template -->
+                <ng-template #editProductTemplate>
+                  <td>
+                    <input
+                      type="text"
+                      [(ngModel)]="product.productName"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      [(ngModel)]="product.rate"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>{{ product.workArea }}</td>
+                  <td class="row-2 action">
+                    <button
+                      class="btn btn-light mx-1"
+                      (click)="saveEditedProduct(contractor.id, product)"
+                    >
+                      <i class="bi bi-floppy"></i>
+                    </button>
+                    <button
+                      class="btn btn-light"
+                      (click)="cancelProductEdit(product)"
+                    >
+                      <i class="bi bi-x-lg"></i>
+                    </button>
+                  </td>
+                  <td class="action">
+                    <button
+                      class="btn btn-outlinr-danger"
+                      (click)="deleteProduct(contractor.id, product.id)"
+                    >
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                  </td>
+                </ng-template>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<hr />

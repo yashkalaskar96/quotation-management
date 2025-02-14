@@ -1,0 +1,117 @@
+.headoftable {
+  font-size: 18px;
+}
+
+.row-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Common Button Styles */
+.custom-button {
+  background-color: #2890ff; /* Bootstrap primary blue */
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 10px;
+  border: 2px solid rgb(6, 96, 206);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.custom-button:hover {
+  background-color: #1c82f0; /* Darker blue */
+  transform: scale(1.02);
+}
+.custom-border{
+  background-color: #41aef2; /* Bootstrap primary blue */
+  color: white;
+  border: 1px solid rgb(18, 117, 239);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: background-color 0.3s, transform 0.3s;
+
+}
+.custom-border:hover {
+  background-color: #1885f9; /* Darker blue */
+  transform: scale(1.009);
+}
+
+/* Align button group to the right */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-left: auto; /* Pushes buttons to the right */
+}
+
+/* Ensure proper button alignment on smaller screens */
+@media (max-width: 768px) {
+  .rate-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .button-group {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+}
+.contractor-header {
+  display: flex;
+  align-items: center; /* Align text and button vertically */
+  justify-content: space-between; /* Space between title and button */
+  gap: 10px; /* Spacing between elements */
+  flex-wrap: wrap; /* Wrap on smaller screens */
+}
+
+.headoftable {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+.work-field-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  float: inline-end;
+}
+
+.work-field-input {
+  width: 250px;
+  padding: 8px;
+  border: 2px solid #cb2f2f;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.work-field-input:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 5px rgba(49, 2, 2, 0.5);
+}
+
+.work-field-button {
+  background-color: rgb(214, 10, 10);
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.work-field-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+
