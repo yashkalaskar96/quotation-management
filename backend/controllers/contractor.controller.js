@@ -3,7 +3,7 @@ import { Workfield } from "../models/workfields.model.js";
 
 // Add a new contractor
 const addNewContractor = async (req, res) => {
-  const { name, mobileNumber, email, workFieldId, address } = req.body;
+  const { name, mobileNumber, email, workFieldId, address } = req.body; 
 
   try {
     // Check if the work field exists
