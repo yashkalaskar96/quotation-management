@@ -1,350 +1,192 @@
 <h2 class="text-center mt-2 mb-4 custom-heading">Create Quotation</h2>
 
-<div class="contain">
-  <form [formGroup]="quotationForm" (ngSubmit)="onSubmit()">
-    <!-- Client Information Row -->
-    <div class="row mb-3">
-      <!-- Client Name -->
-      <div class="col-sm-4 mb-3">
-        <label for="clientName" class="col-form-label fw-bold"
-          >Client Name:</label
-        >
-        <input
-          type="text"
-          id="clientName"
-          formControlName="clientName"
-          class="form-control"
-          required
-        />
-        <div
-          *ngIf="
-            quotationForm.get('clientName')?.invalid &&
-            quotationForm.get('clientName')?.touched
-          "
-          class="text-danger"
-        >
-          Client name is required.
-        </div>
+<form [formGroup]="quotationForm" (ngSubmit)="onSubmit()">
+  <!-- Client Information -->
+  <div class="row mb-3">
+    <!-- Client Name -->
+    <div class="col-sm-4 mb-3">
+      <label for="clientName" class="col-form-label fw-bold">Client Name:</label>
+      <input type="text" id="clientName" formControlName="clientName" class="form-control" required />
+      <div *ngIf="
+          quotationForm.get('clientName')?.invalid &&
+          quotationForm.get('clientName')?.touched
+        " class="text-danger">
+        Client name is required.
       </div>
+    </div>
 
-      <!-- Mobile Number -->
-      <div class="col-sm-4 mb-3">
-        <label for="mobileNumber" class="col-form-label fw-bold"
-          >Mobile Number:</label
-        >
-        <input
-          type="text"
-          id="mobileNumber"
-          formControlName="mobileNumber"
-          class="form-control"
-          required
-        />
-        <div
-          *ngIf="
-            quotationForm.get('mobileNumber')?.invalid &&
-            quotationForm.get('mobileNumber')?.touched
-          "
-          class="text-danger"
-        >
-          <div *ngIf="quotationForm.get('mobileNumber')?.errors?.['required']">
-            Mobile number is required.
-          </div>
-          <div *ngIf="quotationForm.get('mobileNumber')?.errors?.['pattern']">
-            Please enter a valid 10-digit mobile number.
-          </div>
+    <!-- Mobile Number -->
+    <div class="col-sm-4 mb-3">
+      <label for="mobileNumber" class="col-form-label fw-bold">Mobile Number:</label>
+      <input type="text" id="mobileNumber" formControlName="mobileNumber" class="form-control" required />
+      <div *ngIf="
+          quotationForm.get('mobileNumber')?.invalid &&
+          quotationForm.get('mobileNumber')?.touched
+        " class="text-danger">
+        <div *ngIf="quotationForm.get('mobileNumber')?.errors?.['required']">
+          Mobile number is required.
         </div>
-      </div>
-
-      <!-- Email -->
-      <div class="col-sm-4 mb-3">
-        <label for="email" class="col-form-label fw-bold">Email:</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="form-control"
-          required
-        />
-        <div
-          *ngIf="
-            quotationForm.get('email')?.invalid &&
-            quotationForm.get('email')?.touched
-          "
-          class="text-danger"
-        >
-          <div *ngIf="quotationForm.get('email')?.errors?.['required']">
-            Email is required.
-          </div>
-          <div *ngIf="quotationForm.get('email')?.errors?.['email']">
-            Please enter a valid email address.
-          </div>
+        <div *ngIf="quotationForm.get('mobileNumber')?.errors?.['pattern']">
+          Please enter a valid 10-digit mobile number.
         </div>
       </div>
     </div>
 
-    <!-- Address and Dates Row -->
-    <div class="row mb-3">
-      <!-- Address -->
-      <div class="col-sm-4 mb-3">
-        <label for="address" class="col-form-label fw-bold">Address:</label>
-        <input
-          type="text"
-          id="address"
-          formControlName="address"
-          class="form-control"
-          required
-        />
-        <div
-          *ngIf="
-            quotationForm.get('address')?.invalid &&
-            quotationForm.get('address')?.touched
-          "
-          class="text-danger"
-        >
-          <div *ngIf="quotationForm.get('address')?.errors?.['required']">
-            Address is required.
-          </div>
-          <div *ngIf="quotationForm.get('address')?.errors?.['minlength']">
-            Address must be at least 10 characters long.
-          </div>
+    <!-- Email -->
+    <div class="col-sm-4 mb-3">
+      <label for="email" class="col-form-label fw-bold">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control" required />
+      <div *ngIf="
+          quotationForm.get('email')?.invalid &&
+          quotationForm.get('email')?.touched
+        " class="text-danger">
+        <div *ngIf="quotationForm.get('email')?.errors?.['required']">
+          Email is required.
         </div>
-      </div>
-
-      <!-- Quotation Date -->
-      <div class="col-sm-4 mb-3">
-        <label for="quotationDate" class="col-form-label fw-bold"
-          >Quotation Date:</label
-        >
-        <input
-          type="date"
-          id="quotationDate"
-          formControlName="quotationDate"
-          class="form-control"
-          required
-        />
-        <div
-          *ngIf="
-            quotationForm.get('quotationDate')?.invalid &&
-            quotationForm.get('quotationDate')?.touched
-          "
-          class="text-danger"
-        >
-          Quotation date is required.
-        </div>
-      </div>
-
-      <!-- Expiry Date -->
-      <div class="col-sm-4 mb-3">
-        <label for="expiryDate" class="col-form-label fw-bold"
-          >Expiry Date:</label
-        >
-        <input
-          type="date"
-          id="expiryDate"
-          formControlName="expiryDate"
-          class="form-control"
-          required
-        />
-        <div
-          *ngIf="
-            quotationForm.get('expiryDate')?.invalid &&
-            quotationForm.get('expiryDate')?.touched
-          "
-          class="text-danger"
-        >
-          Expiry date is required.
+        <div *ngIf="quotationForm.get('email')?.errors?.['email']">
+          Please enter a valid email address.
         </div>
       </div>
     </div>
-    <hr />
-    <!-- Products Section -->
-     <div>
-    <div class="selection-container">
-      <div class="selection-box">
-        <label for="workfield">Select Work Field:</label>
-        <select
-          id="workfield"
-          class="custom-select"
-          (change)="onWorkFieldChange($event)"
-        >
-          <option *ngFor="let field of workFields">{{ field }}</option>
-        </select>
-      </div>
+  </div>
 
-      <div class="selection-box">
-        <label for="contractor">Select Contractor:</label>
-        <select
-          id="contractor"
-          class="custom-select"
-          (change)="onWorkFieldChange($event)"
-        >
-          <option *ngFor="let contractor of workFields">
-            {{ contractor }}
+  <!-- Address and Dates Row -->
+  <div class="row mb-3">
+    <!-- Address -->
+    <div class="col-sm-4 mb-3">
+      <label for="address" class="col-form-label fw-bold">Address:</label>
+      <input type="text" id="address" formControlName="address" class="form-control" required />
+      <div *ngIf="
+          quotationForm.get('address')?.invalid &&
+          quotationForm.get('address')?.touched
+        " class="text-danger">
+        <div *ngIf="quotationForm.get('address')?.errors?.['required']">
+          Address is required.
+        </div>
+        <div *ngIf="quotationForm.get('address')?.errors?.['minlength']">
+          Address must be at least 10 characters long.
+        </div>
+      </div>
+    </div>
+
+    <!-- Quotation Date -->
+    <div class="col-sm-4 mb-3">
+      <label for="quotationDate" class="col-form-label fw-bold">Quotation Date:</label>
+      <input type="date" id="quotationDate" formControlName="quotationDate" class="form-control" required />
+      <div *ngIf="
+          quotationForm.get('quotationDate')?.invalid &&
+          quotationForm.get('quotationDate')?.touched
+        " class="text-danger">
+        Quotation date is required.
+      </div>
+    </div>
+
+    <!-- Expiry Date -->
+    <div class="col-sm-4 mb-3">
+      <label for="expiryDate" class="col-form-label fw-bold">Expiry Date:</label>
+      <input type="date" id="expiryDate" formControlName="expiryDate" class="form-control" required />
+      <div *ngIf="
+          quotationForm.get('expiryDate')?.invalid &&
+          quotationForm.get('expiryDate')?.touched
+        " class="text-danger">
+        Expiry date is required.
+      </div>
+    </div>
+  </div>
+  <hr />
+
+  <!-- Work Fields Section -->
+  <div formArrayName="workFields">
+    <div *ngFor="let workField of workFields.controls; let i = index" [formGroupName]="i">
+      <div class="border p-3 mb-3">
+        <h4>Work Field {{ i + 1 }}</h4>
+
+        <!-- <div class="row">
+          <div class="col-sm-6">
+            <label>Work Field Name:</label>
+            <input type="text" formControlName="workFieldName" class="form-control" required />
+          </div>
+        </div> -->
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label>Work Field Name:</label>
+            <select  formControlName="workFieldName" class="form-control" required (change)="onWorkFieldChange($event)">
+              <option *ngFor="let field of allworkFields" [value]="field.id">{{ field.workfieldName }}</option>
+            </select>
+          </div>
+
+          <div class="col-sm-2">
+            <label>Contractor:</label>
+            <select formArrayName="contractors" class="form-control" required (change)="onContractorChange($event)">
+              <option *ngFor="let field of filteredContractors" [value]="field.id">{{ field.name  }}</option>
+            </select>
+          </div>
+        </div>
+       
+
+        <!-- Contractors Section -->
+        <!-- <h5 class="mt-3">Contractors</h5>
+        <div formArrayName="contractors">
+          <div *ngFor="let contractor of getContractors(i).controls; let j = index" [formGroupName]="j">
+            <div class="d-flex align-items-center mb-2">
+              <input type="text" formControlName="contractorName" class="form-control" placeholder="Contractor Name"
+                required />
+              <button type="button" class="btn btn-danger ms-2" (click)="removeContractor(i, j)">Remove</button>
+            </div>
+          </div>
+        </div> -->
+
+       
+        <!-- <button type="button" class="btn btn-primary mt-2" (click)="addContractor(i)">+ Add Contractor</button> -->
+
+        <!-- Products Section -->
+        <h5 class="mt-3">Products</h5>
+        <div formArrayName="products">
+          <div class="row fw-bold mb-2">
+            <div class="col-sm-3"><h6 class="heads">Product Name</h6></div>
+            <div class="col-sm-2"><h6 class="heads">Rate of Product</h6></div>
+            <div class="col-sm-2"><h6 class="heads">Area of Unit</h6></div>
+            <div class="col-sm-2"><h6 class="heads">Total Units</h6></div>
+            <div class="col-sm-2"><h6 class="heads">Total Price</h6></div>
+          </div>
+          <div *ngFor="let product of getProducts(i).controls; let j = index" [formGroupName]="j">
+            <div class="row mb-2">
+              <div class="col-sm-3">
+                <select formControlName="productName" class="form-control" required >
+                  <option *ngFor="let product of contractorProducts" 
+                  [value]="product.productName">
+            {{ product.productName }}
           </option>
-        </select>
-      </div>
-    </div>
-
-    <div class="border-top mx-2">
-      <h4 class="mt-4">Products</h4>
-
-      <div class="row fw-bold mb-2">
-        <div class="col-sm-3"><h6 class="heads">Product Name</h6></div>
-        <div class="col-sm-2"><h6 class="heads">Rate of Product</h6></div>
-        <div class="col-sm-2"><h6 class="heads">Area of Unit</h6></div>
-        <div class="col-sm-2"><h6 class="heads">Total Units</h6></div>
-        <div class="col-sm-2"><h6 class="heads">Total Price</h6></div>
-      </div>
-
-      <div formArrayName="products" class="mb-3">
-        <div
-          *ngFor="let product of products.controls; let i = index"
-          [formGroupName]="i"
-          class="row mb-3"
-        >
-          <div class="col-sm-3">
-            <input
-              formControlName="productName"
-              class="form-control"
-              placeholder="Product Name"
-              required
-            />
-          </div>
-          <div class="col-sm-2">
-            <input
-              formControlName="rate"
-              type="number"
-              class="form-control"
-              placeholder="Rate/sq.ft"
-              required
-            />
-          </div>
-          <div class="col-sm-2">
-            <input
-              formControlName="area"
-              type="number"
-              class="form-control"
-              placeholder="Area of Unit"
-              required
-            />
-          </div>
-          <div class="col-sm-2">
-            <input
-              formControlName="quantity"
-              type="number"
-              class="form-control"
-              placeholder="Total Units"
-              required
-            />
-          </div>
-          <div class="col-sm-2">
-            <input
-              formControlName="totalPrice"
-              type="number"
-              class="form-control"
-              placeholder="Total Price"
-              [value]="
-                product.get('quantity')?.value *
-                product.get('area')?.value *
-                product.get('rate')?.value
-              "
-              readonly
-            />
-          </div>
-          <div class="col-sm-1">
-            <button
-              type="button"
-              class="btn btn-danger"
-              (click)="removeProduct(i)"
-            >
-              <i class="bi bi-trash3"></i> Remove
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <button type="button" class="btn btn-primary mb-3" (click)="addProduct()">
-        <i class="bi bi-plus-circle mx-1"></i> Add Product
-      </button>
-    </div>
-    </div>
-
-    <!-- Totals Section -->
-    <div class="contains">
-      <div class="border-top border-dark mt-4 totals-section">
-        <!-- Grand Total -->
-        <div class="row mb-4 align-items-center">
-          <label
-            for="grandTotal"
-            class="col-sm-3 col-form-label fw-bold text-end"
-            >Grand Total:</label
-          >
-          <div class="col-sm-4">
-            <div
-              class="border rounded p-2 bg-light text-dark text-end total-box"
-            >
-              {{
-                calculateGrandTotal() | currency : "INR" : "symbol" : "1.0-2"
-              }}
-            </div>
-          </div>
-        </div>
-
-        <!-- Discount -->
-        <form [formGroup]="quotationForm">
-          <div class="row mb-4 align-items-center">
-            <label
-              for="discount"
-              class="col-sm-3 col-form-label fw-bold text-end"
-              >Discount (%):</label
-            >
-            <div class="col-sm-4">
-              <input
-                type="number"
-                id="discount"
-                formControlName="discount"
-                class="form-control discount-input"
-                (input)="calculateTotal()"
-                placeholder="Enter discount (%)"
-                required
-              />
-              <div
-                *ngIf="discount?.errors?.['max'] && discount?.touched"
-                class="text-danger small"
-              >
-                Discount cannot be more than 100%.
+          
+                </select>
               </div>
-              <div
-                *ngIf="discount?.errors?.['min'] && discount?.touched"
-                class="text-danger small"
-              >
-                Discount cannot be less than 0%.
+              <div class="col-sm-2">
+                <input type="number" formControlName="rate" class="form-control" placeholder="Rate" required />
+              </div>
+              <div class="col-sm-2">
+                <input type="number" formControlName="area" class="form-control" placeholder="Area" required />
+              </div>
+              <div class="col-sm-2">
+                <input type="number" formControlName="quantity" class="form-control" placeholder="Quantity" required />
+              </div>
+              <div class="col-sm-2">
+                <input type="number" formControlName="totalPrice" class="form-control" readonly />
+              </div>
+              <div class="col-sm-1">
+                <button type="button" class="btn btn-danger" (click)="removeProduct(i, j)">Remove</button>
               </div>
             </div>
           </div>
-        </form>
-
-        <!-- Total After Discount -->
-        <div class="row mb-4 align-items-center">
-          <label for="total" class="col-sm-3 col-form-label fw-bold text-end"
-            >Total (After Discount):</label
-          >
-          <div class="col-sm-4">
-            <div
-              class="border rounded p-2 bg-light text-dark text-end total-box"
-            >
-              {{ calculateTotal() | currency : "INR" : "symbol" : "1.0-2" }}
-            </div>
-          </div>
         </div>
+        <button type="button" class="btn btn-primary mt-2" (click)="addProduct(i)">+ Add Product</button>
 
-        <!-- Submit Button -->
-        <div class="text-center">
-          <button type="submit" class="btn btn-success px-4">
-            <i class="bi bi-hand-thumbs-up me-1"></i> Finish
-          </button>
-        </div>
+        <button type="button" class="btn btn-danger mt-3" (click)="removeWorkField(i)">Remove Work Field</button>
       </div>
     </div>
-  </form>
-</div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="addWorkField()">+ Add Work Field</button>
+
+  <hr />
+  <button type="submit" class="btn btn-success">Submit Quotation</button>
+</form>
